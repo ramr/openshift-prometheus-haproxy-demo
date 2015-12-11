@@ -89,10 +89,10 @@ Demo
     port 9090 on the host.
 
         cd ../  #  cd <git-checkout-dir>/openshift-prometheus-haproxy-demo
-	make run
+        make run  ||  echo "see alternative instructions below ..."
 
-	#  Or alternatively, you can use the actual docker command.
-	docker run -p 0.0.0.0:9999:9090 -dit ramr/openshift-prometheus-test
+        echo "Alternatively, you can just run the docker command: "
+        docker run -p 0.0.0.0:9999:9090 -dit ramr/openshift-prometheus-test
 
 
 8.  View the haproxy statistics in the prometheus display at:
