@@ -79,12 +79,30 @@ Demo
         oc get routes
 
 
-6.  Generate some demo load.
+6.  Wait a bit for the service to become available.
+
+        curl -vvv -H "Host: ig-allow-http.header.test" http://127.0.0.1/
+
+
+7.  Run the prometheus server that will scrape the haproxy metrics.
+    Note: we use port 9999 as some environments have cockpit running on
+    port 9090 on the host.
+
+        cd ../  #  cd <git-checkout-dir>/openshift-prometheus-haproxy-demo
+	make run
+
+	#  Or alternatively, you can use the actual docker command.
+	docker run -p 0.0.0.0:9999:9090 -dit ramr/openshift-prometheus-test
+
+
+8.  View the haproxy statistics in the prometheus display at:
+
+        http://<node-ipaddr>:9999/consoles/haproxy.html
+
+
+9.  Generate some demo load and you will see the haproxy stats within
+    prometheus.
 
         ab -c 5 -t 30 -H "Host: ig-allow-http.header.test" http://127.0.0.1/
 
-
-7.  View the prometheus display for the haproxy metrics:
-
-        http://<machine>:9999/consoles/haproxy.html
 
