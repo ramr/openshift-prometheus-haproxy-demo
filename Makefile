@@ -1,6 +1,6 @@
 #! /usr/bin/env make
 
-IMAGE_NAME = "ramr/origin-haproxy-exporter-test"
+IMAGE_NAME = "ramr/openshift-prometheus-test"
 
 
 all:	build
@@ -10,4 +10,5 @@ build:
 	docker build -t $(IMAGE_NAME) ./
 
 run:	
-	docker run -dit $(IMAGE_NAME)
+	@echo "  - Starting docker container for image $(IMAGE_NAME) ... "
+	docker run -p 0.0.0.0:9999:9090 -dit $(IMAGE_NAME)

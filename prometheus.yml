@@ -1,0 +1,12 @@
+---
+global:
+  scrape_interval: "15s"  #  "60s"
+  scrape_timeout: "10s"
+  # external_labels:
+    # source: openshift-origin-prometheus
+
+scrape_configs:
+  - job_name:  "haproxy"
+    target_groups:
+      - targets:
+        - "10.0.2.15:9101"

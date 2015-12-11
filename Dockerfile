@@ -1,7 +1,5 @@
-FROM fedora
+FROM prom/prometheus
 
-ADD bin/ /srv/prometheus/
+EXPOSE 9090:9999
 
-EXPOSE 9090
-
-ENTRYPOINT [ "/srv/prometheus/bin/ctl.sh", "start" ]
+ADD prometheus.yml /etc/prometheus/
