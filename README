@@ -1,4 +1,0 @@
-docker pull prom/haproxy-exporter
-docker pull prom/prometheus
-
-
