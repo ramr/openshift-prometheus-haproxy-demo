@@ -60,20 +60,16 @@ Demo
 5.  As mentioned in the https://github.com/ramr/nodejs-header-echo repo,
     create a deployment, service and route.
 
-        #  Get sources.
-        git clone https://github.com/ramr/nodejs-header-echo.git
-        cd nodejs-header-echo
-
-        #  Build docker images.
-        make
+        #  Update submodule to the nodejs-header-echo repo and build images.
+        (cd nodejs-header-echo && git submodule update --init --recursive && make)
 
         #  Create deployment + secure/insecure services.
-        oc create -f openshift/dc.json
-        oc create -f openshift/secure-service.json
-        oc create -f openshift/insecure-service.json
+        oc create -f nodejs-header-echo/openshift/dc.json
+        oc create -f nodejs-header-echo/openshift/secure-service.json
+        oc create -f nodejs-header-echo/openshift/insecure-service.json
 
         #  Add a route that allows http and https.
-        oc create -f openshift/edge-secured-allow-http-route.json
+        oc create -f nodejs-header-echo/openshift/edge-secured-allow-http-route.json
 
         # check the routes.
         oc get routes
@@ -88,10 +84,9 @@ Demo
     Note: we use port 9999 as some environments have cockpit running on
     port 9090 on the host.
 
-        cd ../  #  cd <git-checkout-dir>/openshift-prometheus-haproxy-demo
         make run  ||  echo "see alternative instructions below ..."
 
-        echo "Alternatively, you can just run the docker command: "
+        echo "Alternatively, you can just start the docker container."
         docker run -p 0.0.0.0:9999:9090 -dit ramr/openshift-prometheus-test
 
 
