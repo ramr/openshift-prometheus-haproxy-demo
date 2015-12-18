@@ -77,7 +77,7 @@ Demo
 
 6.  Wait a bit for the service to become available.
 
-        curl -vvv -H "Host: ig-allow-http.header.test" http://127.0.0.1/
+        curl -vvv -H "Host: allow-http.header.test" http://127.0.0.1/
 
 
 7.  Run the prometheus server that will scrape the haproxy metrics.
@@ -98,6 +98,6 @@ Demo
 9.  Generate some demo load and you will see the haproxy stats within
     prometheus.
 
-        ab -c 5 -t 30 -H "Host: ig-allow-http.header.test" http://127.0.0.1/
+        ab -c 5 -t 30 -H "Host: allow-http.header.test" http://127.0.0.1/
 
 
